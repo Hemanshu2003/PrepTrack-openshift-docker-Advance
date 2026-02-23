@@ -117,10 +117,10 @@ oc get route web-frontend
 Copy the generated link add `http://<copied-link>` in browser. You should see the PrepTrack dashboard successfully fetching your study tasks from the PostgreSQL database via the Python API!
 
 
-## 🧠 1. The Real-Time Data Flow (File by File)
+## 🧠 The Real-Time Data Flow (File by File)
 Here is the exact journey of a single chat message from the moment you click "Send."
 
-1. frontend/index.html (The Client)
+#### 1. frontend/index.html (The Client)
    
 * The Connection: When the page loads, const socket = io(serverUrl); executes. Instead of a standard HTTP request that opens and closes, this creates a persistent, two-way TCP connection (a WebSocket) between your browser and one of the backend OpenShift pods.
 
@@ -128,7 +128,7 @@ Here is the exact journey of a single chat message from the moment you click "Se
 
 * The Listener: The socket.on('receive_message', ...) function constantly listens on that tunnel. When the backend pushes new data down, it instantly triggers JavaScript to draw the new chat bubble on your screen without refreshing.
 
-2. backend/app.py (The Server & Broadcaster)
+#### 2. backend/app.py (The Server & Broadcaster)
    
 * Gevent & Async: The lines import gevent.monkey; gevent.monkey.patch_all() at the top rewrite Python's core networking libraries. This allows a single backend pod to handle thousands of open WebSocket connections simultaneously without freezing.
 
@@ -136,7 +136,7 @@ Here is the exact journey of a single chat message from the moment you click "Se
 
 * The Redis Handoff: After saving to the database, the backend hits emit('receive_message', data, broadcast=True). Because we configured Flask-SocketIO with message_queue=REDIS_URL, this command does not just send the message back to the sender. It pushes the message into Redis.
 
-3. The Redis Broker (The Post Office)
+#### 3. The Redis Broker (The Post Office)
    
 * Redis is operating in Pub/Sub (Publish/Subscribe) mode.
 
@@ -146,7 +146,7 @@ Here is the exact journey of a single chat message from the moment you click "Se
 
 * Those other pods receive the message from Redis and push it down their own open WebSocket connections to User B and User C.
 
-4. database/init.sql (The Memory)
+#### 4. database/init.sql (The Memory)
 
 * PostgreSQL serves as the cold storage. We use the JSONB data type for the reactions column. This is incredibly powerful because it allows you to store dynamic key-value pairs (like {"👍": 2, "🚀": 1}) without needing to create a complex, separate SQL table just for emojis.
 
