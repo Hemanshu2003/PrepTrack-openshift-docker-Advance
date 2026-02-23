@@ -1,5 +1,7 @@
-# 📚 PrepTrack: 3-Tier Microservices Study Portal
-PrepTrack is a cloud-native, multi-tier web application designed to track study goals, manage syllabuses, and store preparation notes. It is built using a microservices architecture and deployed on the Red Hat Developer Sandbox (OpenShift).
+## Note: `This project is the successor to ![PrepTrack-openshift-docker](https://github.com/Hemanshu2003/PrepTrack-openshift-docker), and it requires completing all the necessary prerequisites.`
+
+# 📚 PrepTrack Chat - (Advance): 3-Tier Microservices Study Portal
+PrepTrack is a cloud-native, real-time community chat and study portal built. It utilizes an event-driven microservices architecture built with Python (Flask), WebSockets (Socket.IO), Redis for Pub/Sub message broadcasting, and PostgreSQL for stateful data storage. The application is containerized and deployed on Red Hat OpenShift using Source-to-Image (S2I) builds, dynamic networking, and Kubernetes health probes to demonstrate high availability and enterprise-grade deployment practices.
 
 ---
  
@@ -7,7 +9,8 @@ PrepTrack is a cloud-native, multi-tier web application designed to track study 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
- 
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+
 ## 🎯 Project Overview
 PrepTrack is a cloud-native, 3-tier web application built to manage intensive study schedules and track preparation progress for competitive technical exams.
  
