@@ -25,7 +25,7 @@ This project serves as a practical demonstration of containerization, microservi
 3. *Data Persistence:* Update PostgreSQL with a new schema that supports self-referencing (replies) and JSONB fields (reactions).
 
  
-![SS-Architecture-Daigram](https://github.com/Hemanshu2003/PrepTrack-openshift-docker/blob/main/arch.png)
+![SS-Architecture-Daigram](https://github.com/Hemanshu2003/PrepTrack-openshift-docker-Advance/blob/main/arch.png)
 
  
 ## ⚙️ Prerequisites
